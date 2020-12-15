@@ -25,7 +25,7 @@
 -- Изнајмување книга – пополнување форма за додавање нова позајмица во база (моменталниот вработен ја пополнува формата)
 begin;
 update primerok
-    set status='NOT AVAILABLE'
+    set status='UNAVAILABLE'
     where seriski_broj='000001' and inventaren_broj='000006'and status='AVAILABLE';
 insert into pozajmica
     (seriski_broj, inventaren_broj, chlen_EMBG, vraboten_EMBG, datum_vrakjanje, datum_pozajmuvanje, status)
@@ -45,7 +45,7 @@ update pozajmica
           datum_pozajmuvanje='2020-12-13' and status='ACTIVE';
 update primerok
     set status='AVAILABLE'
-    where seriski_broj='000001' and inventaren_broj='000006'and status='NOT AVAILABLE';
+    where seriski_broj='000001' and inventaren_broj='000006'and status='UNAVAILABLE';
 commit;
 select * from pozajmica;
 

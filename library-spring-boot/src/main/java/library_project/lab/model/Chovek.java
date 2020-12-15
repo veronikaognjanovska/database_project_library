@@ -4,12 +4,13 @@ package library_project.lab.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Chovek {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Chovek implements Serializable {
 
     @Id @Column(length = 13)
     private String embg;

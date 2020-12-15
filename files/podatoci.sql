@@ -51,11 +51,11 @@ INSERT INTO kniga ( seriski_broj, naslov, broj_strani, nastan_id )values
 -----++++---
 
 INSERT INTO primerok (seriski_broj, inventaren_broj,status)values
-    ('000001','000001','NOT AVAILABLE'),
+    ('000001','000001','UNAVAILABLE'),
     ('000002','000002','AVAILABLE'),
-    ('000003','000003','NOT AVAILABLE'),
+    ('000003','000003','UNAVAILABLE'),
     ('000004','000004','AVAILABLE'),
-    ('000005','000005','NOT AVAILABLE'),
+    ('000005','000005','UNAVAILABLE'),
     ('000001','000006','AVAILABLE'),
     ('000001','000007','AVAILABLE'),
     ('000001','000008','AVAILABLE'),
@@ -98,7 +98,7 @@ select * from kniga_napishana_avtor;
 
 
 
-
+--
 -- drop view  pregled_na_site_knigi_i_status;
 -- drop view  momentalni_pozajmici;
 -- drop view  site_pozajmici;

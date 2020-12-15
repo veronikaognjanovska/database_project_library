@@ -58,7 +58,7 @@ create table kniga (
 --	Primerok (seriski_broj*(Kniga), inventaren_broj)
 create domain STATUS_PRIMEROK
     varchar(20)
-    check ( value in ('AVAILABLE','NOT AVAILABLE'));
+    check ( value in ('AVAILABLE','UNAVAILABLE'));
 create table primerok (
     seriski_broj integer not null,
     inventaren_broj integer not null,

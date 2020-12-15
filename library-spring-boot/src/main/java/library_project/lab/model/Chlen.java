@@ -5,11 +5,14 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import java.io.Serializable;
 import java.util.Date;
+
 
 @Data
 @Entity
-public class Chlen extends Chovek{
+public class Chlen extends Chovek implements Serializable {
 
     @Column(nullable = false)
     private Date datum_na_zachlenuvanje;
@@ -22,3 +25,4 @@ public class Chlen extends Chovek{
     }
 
 }
+
