@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 
@@ -16,7 +17,7 @@ public class Nastan implements Serializable {
     private Long nastan_id;
 
     @Column(nullable = false)
-    private Date datum;
+    private ZonedDateTime datum;
 
     @ManyToOne
     @JoinColumn(name="embg_vraboten_glaven")
@@ -24,7 +25,7 @@ public class Nastan implements Serializable {
 
     public Nastan() {}
 
-    public Nastan(Date date, Vraboten embg_vraboten_glaven) {
+    public Nastan(ZonedDateTime date, Vraboten embg_vraboten_glaven) {
         this.datum = date;
         this.embgVrabotenGlaven = embg_vraboten_glaven;
     }

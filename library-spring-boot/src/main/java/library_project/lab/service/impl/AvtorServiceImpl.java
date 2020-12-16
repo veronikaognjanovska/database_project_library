@@ -1,7 +1,6 @@
 package library_project.lab.service.impl;
 
 import library_project.lab.model.Avtor;
-import library_project.lab.model.Nastan;
 import library_project.lab.model.exception.AlreadyExistsException;
 import library_project.lab.repository.AvtorRepository;
 import library_project.lab.service.AvtorService;

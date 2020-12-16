@@ -5,10 +5,11 @@ import library_project.lab.model.Vraboten;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Optional;
 
 @Repository
 public interface NastanRepository extends JpaRepository<Nastan, Long> {
-    Optional<Nastan> findByDatumAndEmbgVrabotenGlaven(Date date, Vraboten embg_vraboten_glaven);
+    Optional<Nastan> findByDatumAndEmbgVrabotenGlaven(ZonedDateTime date, Vraboten embg_vraboten_glaven);
 }

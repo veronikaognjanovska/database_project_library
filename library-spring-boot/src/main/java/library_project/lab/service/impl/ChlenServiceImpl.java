@@ -7,6 +7,7 @@ import library_project.lab.service.ChlenService;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class ChlenServiceImpl implements ChlenService {
 
 
     @Override
-    public Chlen save(String embg, String ime, String prezime, Date datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj, Date datum_na_zachlenuvanje)
+    public Chlen save(String embg, String ime, String prezime, ZonedDateTime datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj, ZonedDateTime datum_na_zachlenuvanje)
             throws IllegalArgumentException,AlreadyExistsException{
         if (embg==null || embg.isEmpty() || ime==null || ime.isEmpty() || prezime==null || prezime.isEmpty() ||
                 datum_na_ragjanje==null  || adresa_na_ziveenje==null || adresa_na_ziveenje.isEmpty() ||

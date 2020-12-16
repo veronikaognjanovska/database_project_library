@@ -8,22 +8,30 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@IdClass(PrimerokKey.class)
+//@IdClass(PrimerokKey.class)
 public class Primerok implements Serializable {
 
-    @Id
-    private Long seriski_broj;
-    @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
-    private Long inventaren_broj;
+//    @Id
+//    private Long seriski_broj;
+//    @Id
+//    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+//    private Long inventaren_broj;
+
+    @EmbeddedId
+    @JoinColumns(value = {
+            @JoinColumn(name = "seriski_broj", referencedColumnName = "seriski_broj"),
+            @JoinColumn(name = "inventaren_broj", referencedColumnName = "inventaren_broj")
+    })
+    private PrimerokKey primerokKey;
+
 
     @Enumerated(EnumType.STRING)
     private STATUS_PRIMEROK status;
 
     public Primerok(){}
 
-    public Primerok(Long inventaren_broj, STATUS_PRIMEROK status) {
-        this.inventaren_broj = inventaren_broj;
+    public Primerok(Long seriski_broj, STATUS_PRIMEROK status) {
+        this.primerokKey=new PrimerokKey(seriski_broj);
         this.status = status;
     }
 }

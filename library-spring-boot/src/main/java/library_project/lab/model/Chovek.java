@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 @Data
@@ -20,7 +21,7 @@ public class Chovek implements Serializable {
     @Column(nullable = false)
     private String prezime;
     @Column(nullable = false)
-    private Date datum_na_ragjanje;
+    private ZonedDateTime datum_na_ragjanje;
     @Column(nullable = false)
     private String adresa_na_ziveenje;
     @Column(nullable = false)
@@ -28,7 +29,7 @@ public class Chovek implements Serializable {
 
     public Chovek() { }
 
-    public Chovek(String embg, String ime, String prezime, Date datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj) {
+    public Chovek(String embg, String ime, String prezime, ZonedDateTime datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj) {
         this.embg = embg;
         this.ime = ime;
         this.prezime = prezime;
