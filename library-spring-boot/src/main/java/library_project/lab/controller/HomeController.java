@@ -34,26 +34,32 @@ public class HomeController {
     @GetMapping
     public String getIndexPage(){
 
-//        Chovek c  = chovekService.save("1212999000455","name","surname",
-//                Date.valueOf("2020-09-09"),"address","077888999");
-//        String name = c.getIme();
-//        Vraboten v  = vrabotenService.save("1412999000455","name","surname",
-//                Date.valueOf("2020-09-09"),"address","077888999",Date.valueOf("2020-09-09"));
-//        Date d = (Date) v.getDatum_na_vrabotuvanje();
-//        String namev = v.getIme();
-
-
-//        Chlen cl  = chlenService.save("1312999000455","name","surname",
-//                Date.valueOf("2020-09-09"),"address","077888999",Date.valueOf("2020-09-09"));
-//        Date dcl = (Date) cl.getDatum_na_zachlenuvanje();
-//        String namecl = cl.getIme();
-
          try {
-//            Avtor avtor = avtorService.save("name", "surname", 1900);
-//            Nastan nastan = nastanService.save(Date.valueOf("2020-09-09"), vrabotenService.findByEmbg("1412999000455"));
-//            Kniga kniga = knigaService.save("naslov", 150, nastan);
+//             Chovek c  = chovekService.save("1212999000455","name","surname",
+//                     Date.valueOf("2020-09-09"),"address","077888999");
+//             String name = c.getIme();
+//
+//             Vraboten v  = vrabotenService.save("1412999000455","name","surname",
+//                     Date.valueOf("2020-09-09"),"address","077888999",Date.valueOf("2020-09-09"));
+//             Date d = (Date) v.getDatum_na_vrabotuvanje();
+//             String namev = v.getIme();
+//
+//             Chlen cl  = chlenService.save("1312999000455","name","surname",
+//                     Date.valueOf("2020-09-09"),"address","077888999",Date.valueOf("2020-09-09"));
+//             Date dcl = (Date) cl.getDatum_na_zachlenuvanje();
+//             String namecl = cl.getIme();
+//
+//             Avtor avtor = avtorService.save("name", "surname", 1900);
+//             Nastan nastan = nastanService.save(Date.valueOf("2020-09-09"), vrabotenService.findByEmbg("1412999000455"));
+//             Kniga kniga = knigaService.save("naslov", 150, nastan);
+//
+//             knigaService.addAvtorToKniga(avtor.getAvtor_id(),kniga.getSeriski_broj());
 
 
+
+
+
+//             String naslov=kniga.getNaslov();
 
         }catch (Exception e){
 

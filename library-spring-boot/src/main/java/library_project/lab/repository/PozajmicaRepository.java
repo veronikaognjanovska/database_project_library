@@ -1,4 +1,8 @@
 package library_project.lab.repository;
 
-public interface PozajmicaRepository {
+
+import library_project.lab.model.Pozajmica;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PozajmicaRepository  extends JpaRepository<Pozajmica, Long> {
 }

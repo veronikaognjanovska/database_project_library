@@ -22,7 +22,8 @@ public class NastanServiceImpl implements NastanService {
     }
 
     @Override
-    public Nastan save(Date date, Vraboten embg_vraboten_glaven) {
+    public Nastan save(Date date, Vraboten embg_vraboten_glaven)
+            throws IllegalArgumentException,AlreadyExistsException{
         if (date==null || embg_vraboten_glaven==null) {
             throw new IllegalArgumentException();
         }

@@ -1,4 +1,8 @@
 package library_project.lab.repository;
 
-public interface PrimerokRepository {
+import library_project.lab.model.Primerok;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PrimerokRepository  extends JpaRepository<Primerok, Long> {
+
 }

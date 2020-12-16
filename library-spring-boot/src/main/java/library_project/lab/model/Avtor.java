@@ -6,6 +6,9 @@ import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -22,10 +25,15 @@ public class Avtor implements Serializable {
     @Column(nullable = false,name = "godina_na_ragjanje")
     private Integer godina;
 
+    @ManyToMany(mappedBy = "avtoriSet", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    private Set<Kniga> knigiSet;
+
+
     public Avtor() {}
     public Avtor(String ime, String prezime, Integer godina_na_ragjanje) {
         this.ime = ime;
         this.prezime = prezime;
         this.godina = godina_na_ragjanje;
+        this.knigiSet= new HashSet<>();
     }
 }

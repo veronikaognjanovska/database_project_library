@@ -56,29 +56,29 @@ create table kniga (
     );
 
 --	Primerok (seriski_broj*(Kniga), inventaren_broj)
-create domain STATUS_PRIMEROK
-    varchar(20)
-    check ( value in ('AVAILABLE','UNAVAILABLE'));
+-- create domain STATUS_PRIMEROK
+--     varchar(20)
+--     check ( value in ('AVAILABLE','UNAVAILABLE'));
 create table primerok (
     seriski_broj integer not null,
     inventaren_broj integer not null,
-     status STATUS_PRIMEROK,
+     status varchar(20) check ( status in ('AVAILABLE','UNAVAILABLE') ),
     constraint pk_primerok primary key (seriski_broj,inventaren_broj),
     constraint fk_seriski_broj foreign key (seriski_broj) references kniga(seriski_broj)
     );
 
 --	Kniga_napishana_avtor (seriski_broj *(Kniga), avtor_id*(Avtor))
 create table kniga_napishana_avtor (
-    seriski_broj integer not null,
     avtor_id integer not null,
-    constraint pk_kniga_napishana_avtor primary key (seriski_broj,avtor_id),
-    constraint fk_inventaren_broj foreign key (seriski_broj) references kniga(seriski_broj),
-    constraint fk_avtor_id foreign key (avtor_id) references avtor(avtor_id)
+    seriski_broj integer not null,
+    constraint pk_kniga_napishana_avtor primary key (avtor_id,seriski_broj),
+    constraint fk_seriski_broj_many foreign key (seriski_broj) references kniga(seriski_broj),
+    constraint fk_avtor_id_many foreign key (avtor_id) references avtor(avtor_id)
     );
 
-create domain STATUS_POZAJMICA
-    varchar(20)
-    check ( value in ('ACTIVE','CLOSED'));
+-- create domain STATUS_POZAJMICA
+--     varchar(20)
+--     check ( value in ('ACTIVE','CLOSED'));
 
 --	Pozajmica (seriski_broj*(Kniga), inventaren_broj *(integer), chlen_EMBG*(Chovek), vraboten_EMBG*(Chovek), datum_vrakjanje, datum_pozajmuvanje, status)
 create table pozajmica (
@@ -88,7 +88,7 @@ create table pozajmica (
     vraboten_embg char(13) not null,
     datum_vrakjanje date,
     datum_pozajmuvanje date not null,
-    status STATUS_POZAJMICA,
+    status varchar(20) check ( status in ('ACTIVE','CLOSED') ),
     constraint pk_pozajmica primary key (seriski_broj,inventaren_broj,chlen_embg,vraboten_embg,datum_pozajmuvanje),
     constraint fk_primerok foreign key (seriski_broj,inventaren_broj) references primerok(seriski_broj,inventaren_broj),
     constraint fk_chlen_embg foreign key (chlen_embg) references chlen(embg),

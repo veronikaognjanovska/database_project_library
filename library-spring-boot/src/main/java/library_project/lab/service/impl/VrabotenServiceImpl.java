@@ -21,7 +21,8 @@ public class VrabotenServiceImpl implements VrabotenService {
 
 
     @Override
-    public Vraboten save(String embg, String ime, String prezime, Date datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj, Date datum_na_vrabotuvanje) {
+    public Vraboten save(String embg, String ime, String prezime, Date datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj, Date datum_na_vrabotuvanje)
+            throws IllegalArgumentException,AlreadyExistsException{
         if (embg==null || embg.isEmpty() || ime==null || ime.isEmpty() || prezime==null || prezime.isEmpty() ||
                 datum_na_ragjanje==null  || adresa_na_ziveenje==null || adresa_na_ziveenje.isEmpty() ||
                 telefonski_broj==null || telefonski_broj.isEmpty() || datum_na_vrabotuvanje==null) {

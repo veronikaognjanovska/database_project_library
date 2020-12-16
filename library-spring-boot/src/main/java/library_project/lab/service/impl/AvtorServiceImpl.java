@@ -20,7 +20,8 @@ public class AvtorServiceImpl implements AvtorService {
     }
 
     @Override
-    public Avtor save(String ime, String prezime, Integer godina_na_ragjanje) {
+    public Avtor save(String ime, String prezime, Integer godina_na_ragjanje)
+            throws IllegalArgumentException,AlreadyExistsException{
         if (ime==null || ime.isEmpty() || prezime==null || prezime.isEmpty() ||
                 godina_na_ragjanje==null) {
             throw new IllegalArgumentException();

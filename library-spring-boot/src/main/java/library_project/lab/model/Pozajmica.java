@@ -5,29 +5,33 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 @Data
 @Entity
 public class Pozajmica implements Serializable {
 
-    //???
-    @Id @ManyToOne
-    private Kniga seriski_broj;
-    @Id @ManyToOne
-    private Long inventaren_broj;
 
 
+    @MapsId("seriski_broj")
+    @ManyToOne(optional = false)
+    @JoinColumns(value = {
+            @JoinColumn(name = "seriski_broj", referencedColumnName = "seriski_broj"),
+            @JoinColumn(name = "inventaren_broj", referencedColumnName = "inventaren_broj")
+    })
+    private Primerok entityPrimerok;
+
+    @Id
     @ManyToOne
     @JoinColumn(name="chlen_EMBG")
     private Chovek chlenEMBG;
 
+    @Id
     @ManyToOne
     @JoinColumn(name="vraboten_EMBG")
     private Chovek vrabotenEMBG;
 
-
-    @ManyToOne
+    @Id
     @JoinColumn(name="datum_pozajmuvanje")
     private Date datumPozajmuvanje;
 

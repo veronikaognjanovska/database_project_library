@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 @Data
 @Entity
+@IdClass(PrimerokKey.class)
 public class Primerok implements Serializable {
 
     @Id

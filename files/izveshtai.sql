@@ -40,7 +40,6 @@ select najbarani_knigi_count.mesec, najbarani_knigi_count.seriski_broj,
             )
         as najbarani_knigi_count
     left join pregled_na_site_knigi k on k.seriski_broj= najbarani_knigi_count.seriski_broj
-
 ;
 
 
