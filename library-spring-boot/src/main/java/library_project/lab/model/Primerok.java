@@ -30,8 +30,8 @@ public class Primerok implements Serializable {
 
     public Primerok(){}
 
-    public Primerok(Long seriski_broj, STATUS_PRIMEROK status) {
-        this.primerokKey=new PrimerokKey(seriski_broj);
+    public Primerok(PrimerokKey primerokKey, STATUS_PRIMEROK status) {
+        this.primerokKey=primerokKey;
         this.status = status;
     }
 }

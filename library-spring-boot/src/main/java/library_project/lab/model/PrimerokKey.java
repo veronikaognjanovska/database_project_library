@@ -14,15 +14,15 @@ import java.io.Serializable;
 @Data
 public class PrimerokKey implements Serializable {
 
-    @NotNull
+
     private Long seriski_broj;
-    @NotNull
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+
     private Long inventaren_broj;
 
     public PrimerokKey() { }
 
-    public PrimerokKey(Long seriski_broj) {
+    public PrimerokKey(Long seriski_broj, Long inventaren_broj) {
         this.seriski_broj = seriski_broj;
+        this.inventaren_broj = inventaren_broj;
     }
 }

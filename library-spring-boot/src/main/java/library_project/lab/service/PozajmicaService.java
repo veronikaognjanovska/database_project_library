@@ -10,6 +10,6 @@ import java.util.Date;
 
 public interface PozajmicaService {
     Pozajmica save(Long seriskiBroj, Long inventarenBroj,String embgChlen,String embgVraboten) throws NotFound;
-    void update(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date);
-    Pozajmica findBy(Long seriskiBroj, Long inventarenBroj,String embgChlen,String embgVraboten,Date date) throws NotFound;
+    void updateToClosed(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date);
+    Pozajmica findBy(Long seriskiBroj, Long inventarenBroj,String embgChlen,String embgVraboten,ZonedDateTime date) throws NotFound;
 }

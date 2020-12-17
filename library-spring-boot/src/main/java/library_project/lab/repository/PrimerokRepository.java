@@ -20,8 +20,8 @@ public interface PrimerokRepository  extends JpaRepository<Primerok, PrimerokKey
     Optional<Primerok> findBySeriskiBrojAndInventarenBroj(Long seriskiBroj, Long inventarenBroj);
 
     @Modifying(flushAutomatically = true)
-    @Query(value = "update primerok set status=?1, datum_vrakjanje=?2 where seriski_broj=?3 and inventaren_broj=?4;",
+    @Query(value = "update primerok p set status = ?1 where p.seriski_broj = ?2 and p.inventaren_broj = ?3 ",
             nativeQuery = true)
-    void update(STATUS_PRIMEROK status,String date, Long seriskiBroj, Long inventarenBroj);
+    void update(String status, Long seriskiBroj, Long inventarenBroj);
 
 }

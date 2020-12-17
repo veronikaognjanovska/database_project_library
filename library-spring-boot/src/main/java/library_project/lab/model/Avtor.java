@@ -25,7 +25,7 @@ public class Avtor implements Serializable {
     @Column(nullable = false,name = "godina_na_ragjanje")
     private Integer godina;
 
-    @ManyToMany(mappedBy = "avtoriSet", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "avtoriSet", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Set<Kniga> knigiSet;
 
 

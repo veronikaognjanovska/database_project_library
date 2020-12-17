@@ -25,7 +25,7 @@ public class Kniga implements Serializable {
     @JoinColumn(name="nastan_id")
     private Nastan nastan;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "kniga_napishana_avtor",
             joinColumns = {@JoinColumn(name = "seriski_broj")},

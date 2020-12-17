@@ -120,3 +120,8 @@ select * from kniga_napishana_avtor;
 
 
 
+-- update primerok p set status='AVAILABLE' where p.seriski_broj=3 and p.inventaren_broj=1;
+
+update pozajmica set status='CLOSED', datum_vrakjanje=now()::date where seriski_broj = ?1 and inventaren_broj = ?2 and chlen_embg = ?3 and vraboten_embg = ?4 and datum_pozajmuvanje = ?5::date and status='ACTIVE'
+
+

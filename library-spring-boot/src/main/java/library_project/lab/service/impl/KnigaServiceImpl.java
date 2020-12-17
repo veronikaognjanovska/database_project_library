@@ -28,7 +28,7 @@ public class KnigaServiceImpl implements KnigaService {
     public Kniga save(String naslov, Integer broj_strani, Nastan nastan_id)
             throws IllegalArgumentException,AlreadyExistsException{
 
-        if (naslov==null || naslov.isEmpty() || broj_strani==null || nastan_id==null) {
+        if (naslov==null || naslov.isEmpty() ) {
             throw new IllegalArgumentException();
         }
         if(knigaRepository.findByNaslovAndBrojStraniAndNastan(naslov, broj_strani, nastan_id).isPresent()){

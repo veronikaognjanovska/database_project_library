@@ -2,6 +2,7 @@ package library_project.lab.service.impl;
 
 import library_project.lab.model.*;
 import library_project.lab.model.enumeration.STATUS_POZAJMICA;
+import library_project.lab.model.enumeration.STATUS_PRIMEROK;
 import library_project.lab.model.exception.AlreadyExistsException;
 import library_project.lab.repository.PozajmicaRepository;
 import library_project.lab.service.ChlenService;
@@ -9,13 +10,16 @@ import library_project.lab.service.PozajmicaService;
 import library_project.lab.service.PrimerokService;
 import library_project.lab.service.VrabotenService;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 
+@Service
 public class PozajmicaServiceImpl implements PozajmicaService {
 
     private final PozajmicaRepository pozajmicaRepository;
@@ -32,6 +36,7 @@ public class PozajmicaServiceImpl implements PozajmicaService {
 
 
     @Override
+    @Transactional
     public Pozajmica save(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten) throws IllegalArgumentException, AlreadyExistsException, NotFound {
 
         if (seriskiBroj==null || inventarenBroj==null ||
@@ -43,16 +48,19 @@ public class PozajmicaServiceImpl implements PozajmicaService {
         Vraboten vraboten=vrabotenService.findByEmbg(embgVraboten);
         Pozajmica pozajmica= new Pozajmica(seriskiBroj,inventarenBroj,chlen,vraboten, DateCustom.getDateNow(), STATUS_POZAJMICA.ACTIVE);
         pozajmicaRepository.save(pozajmica);
+        this.primerokService.update(STATUS_PRIMEROK.UNAVAILABLE,seriskiBroj,inventarenBroj);
         return pozajmica;
     }
 
     @Override
-    public void update(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date) {
+    @Transactional
+    public void updateToClosed(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date) {
         this.pozajmicaRepository.update(seriskiBroj,inventarenBroj,embgChlen,embgVraboten,DateCustom.getDateString(date));
+        this.primerokService.update(STATUS_PRIMEROK.AVAILABLE,seriskiBroj,inventarenBroj);
     }
 
     @Override
-    public Pozajmica findBy(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, Date date) throws NotFound {
+    public Pozajmica findBy(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date) throws NotFound {
         Optional<Pozajmica> pozajmica = pozajmicaRepository.findBy(seriskiBroj, inventarenBroj, embgChlen, embgVraboten, date);
         if(!pozajmica.isPresent()){
             throw new NotFound();
