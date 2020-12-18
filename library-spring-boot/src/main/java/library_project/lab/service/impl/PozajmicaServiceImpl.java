@@ -55,13 +55,15 @@ public class PozajmicaServiceImpl implements PozajmicaService {
     @Override
     @Transactional
     public void updateToClosed(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date) {
-        this.pozajmicaRepository.update(seriskiBroj,inventarenBroj,embgChlen,embgVraboten,DateCustom.getDateString(date));
+        String dateString=DateCustom.getDateString(date);
+        this.pozajmicaRepository.update(seriskiBroj,inventarenBroj,embgChlen,embgVraboten,dateString);
         this.primerokService.update(STATUS_PRIMEROK.AVAILABLE,seriskiBroj,inventarenBroj);
     }
 
     @Override
     public Pozajmica findBy(Long seriskiBroj, Long inventarenBroj, String embgChlen, String embgVraboten, ZonedDateTime date) throws NotFound {
-        Optional<Pozajmica> pozajmica = pozajmicaRepository.findBy(seriskiBroj, inventarenBroj, embgChlen, embgVraboten, date);
+        String dateString=DateCustom.getDateString(date);
+        Optional<Pozajmica> pozajmica = pozajmicaRepository.findBy(seriskiBroj, inventarenBroj, embgChlen, embgVraboten, dateString);
         if(!pozajmica.isPresent()){
             throw new NotFound();
         }

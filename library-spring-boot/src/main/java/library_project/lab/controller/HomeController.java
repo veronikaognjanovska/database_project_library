@@ -41,49 +41,33 @@ public class HomeController {
     public String getIndexPage(){
 
          try {
-//             Chovek chovek  = chovekService.save("1212999000455","name","surname",
-//                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999");
-//             String name = chovek.getIme();
-//
-//             Vraboten vraboten  = vrabotenService.save("1412999000455","name","surname",
-//                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999",DateCustom.getZonedDateTimeFromDateString("01-05-2019"));
-//             String namev = vraboten.getIme();
-//
-//             Chlen chlen  = chlenService.save("1312999000455","name","surname",
-//                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999",DateCustom.getZonedDateTimeFromDateString("01-05-2019"));
-//             String namecl = chlen.getIme();
-//
-//             Avtor avtor = avtorService.save("name", "surname", 1900);
-//             Nastan nastan = nastanService.save(DateCustom.getZonedDateTimeFromDateString("01-05-2020"), "1412999000455");
-//             Kniga kniga = knigaService.save("naslov", 150, nastan);
-//             String naslov=kniga.getNaslov();
-//             knigaService.addAvtorToKniga(avtor.getAvtor_id(),kniga.getSeriski_broj());
+             Chovek chovek  = chovekService.save("1212999000455","name","surname",
+                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999");
+             String name = chovek.getIme();
 
-//             Kniga kniga2 = knigaService.save("naslov7", 150,null);
+             Vraboten vraboten  = vrabotenService.save("1412999000455","name","surname",
+                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999",DateCustom.getZonedDateTimeFromDateString("01-05-2019"));
+             String namev = vraboten.getIme();
 
-             Kniga kniga = knigaService.findById(3l);
-             Chlen chlen=chlenService.findByEmbg("1312999000455");
-             Vraboten vraboten = vrabotenService.findByEmbg("1412999000455");
-//             Primerok primerok = primerokService.save(kniga.getSeriski_broj(), STATUS_PRIMEROK.AVAILABLE);
-//             Primerok primerok = primerokService.findBySeriskiBrojAndInventarenBroj(primerok.getPrimerokKey().getSeriski_broj(),
-//                     primerok.getPrimerokKey().getInventaren_broj());
-             Primerok primerok = primerokService.findBySeriskiBrojAndInventarenBroj(3l,1l);
+             Chlen chlen  = chlenService.save("1312999000455","name","surname",
+                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999",DateCustom.getZonedDateTimeFromDateString("01-05-2019"));
+             String namecl = chlen.getIme();
+
+             Avtor avtor = avtorService.save("name", "surname", 1900);
+             Nastan nastan = nastanService.save(DateCustom.getZonedDateTimeFromDateString("01-05-2020"), "1412999000455");
+
+             Kniga kniga = knigaService.save("naslov", 150, nastan);
+             String naslov=kniga.getNaslov();
+             knigaService.addAvtorToKniga(avtor.getAvtor_id(),kniga.getSeriski_broj());
+
+             Primerok primerok = primerokService.save(kniga.getSeriski_broj(), STATUS_PRIMEROK.AVAILABLE);
              Pozajmica pozajmica = pozajmicaService.save(kniga.getSeriski_broj(),primerok.getPrimerokKey().getInventaren_broj(),
                      chlen.getEmbg(), vraboten.getEmbg());
              pozajmicaService.updateToClosed(pozajmica.getPozajmicaKey().getSeriski_broj(),
                      pozajmica.getPozajmicaKey().getInventaren_broj(),
-                     pozajmica.getPozajmicaKey().getChlenEMBG().toString(),
-                     pozajmica.getPozajmicaKey().getVrabotenEMBG().toString(),
+                     pozajmica.getPozajmicaKey().getChlenEMBG().getEmbg(),
+                     pozajmica.getPozajmicaKey().getVrabotenEMBG().getEmbg(),
                      pozajmica.getPozajmicaKey().getDatumPozajmuvanje());
-             Pozajmica pozajmica2 = pozajmicaService.findBy(
-                     pozajmica.getPozajmicaKey().getSeriski_broj(),
-                     pozajmica.getPozajmicaKey().getInventaren_broj(),
-                     pozajmica.getPozajmicaKey().getChlenEMBG().toString(),
-                     pozajmica.getPozajmicaKey().getVrabotenEMBG().toString(),
-                     pozajmica.getPozajmicaKey().getDatumPozajmuvanje()
-             );
-
-             String p="";
 
         }catch (Exception e){
              String error = e.getMessage();
