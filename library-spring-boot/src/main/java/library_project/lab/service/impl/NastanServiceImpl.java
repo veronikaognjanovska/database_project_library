@@ -9,6 +9,7 @@ import library_project.lab.service.VrabotenService;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Optional;
@@ -25,6 +26,7 @@ public class NastanServiceImpl implements NastanService {
     }
 
     @Override
+    @Transactional
     public Nastan save(ZonedDateTime date, String embg_vraboten_glaven)
             throws IllegalArgumentException, AlreadyExistsException, NotFound {
         Vraboten vraboten = vrabotenService.findByEmbg(embg_vraboten_glaven);

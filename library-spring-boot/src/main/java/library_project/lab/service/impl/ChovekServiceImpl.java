@@ -9,6 +9,7 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
 
+import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class ChovekServiceImpl implements ChovekService {
 
 
     @Override
+    @Transactional
     public Chovek save(String embg, String ime, String prezime, ZonedDateTime datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj)
             throws IllegalArgumentException,AlreadyExistsException{
         if (embg==null || embg.isEmpty() || ime==null || ime.isEmpty() || prezime==null || prezime.isEmpty() ||

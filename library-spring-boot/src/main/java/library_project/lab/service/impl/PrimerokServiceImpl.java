@@ -27,13 +27,6 @@ public class PrimerokServiceImpl implements PrimerokService {
     @Override
     public Primerok save(Long seriskiBroj,  STATUS_PRIMEROK status)
             throws IllegalArgumentException, AlreadyExistsException, NotFound {
-//        if (seriskiBroj==null || status==null) {
-//            throw new IllegalArgumentException();
-//        }
-//        Kniga kniga=knigaService.findById(seriskiBroj); //  there must be a book first - just as a check
-//        Primerok primerok = new Primerok(seriskiBroj,status);// inventaren_broj is generated
-//        primerokRepository.save(primerok);
-//        return primerok;
         if (seriskiBroj==null || status==null) {
             throw new IllegalArgumentException();
         }

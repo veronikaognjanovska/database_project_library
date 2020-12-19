@@ -7,6 +7,7 @@ import library_project.lab.service.AvtorService;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -19,6 +20,7 @@ public class AvtorServiceImpl implements AvtorService {
     }
 
     @Override
+    @Transactional
     public Avtor save(String ime, String prezime, Integer godina_na_ragjanje)
             throws IllegalArgumentException,AlreadyExistsException{
         if (ime==null || ime.isEmpty() || prezime==null || prezime.isEmpty() ||
