@@ -1,101 +1,71 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8">
-    <title>Library</title>
-    <style type="text/css">
 
-        main{
-            width: 800px;
-            margin: auto !important;
-        }
-
-    </style>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
-<body>
-
-<header>
-    <nav class="navbar navbar-inverse" style="background-color: #00880033;">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand">Library</a>
-            </div>
-            <div class="navbar-header navbar-right">
-                <a class="btn btn-light" href="/search"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  Search  </a>
-                <a class="btn btn-light" href="/orders"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  List user orders  </a>
-                <a class="btn btn-light" href="/orders/user-shopping-carts"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  List user shopping carts  </a>
-                <a class="btn btn-light" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>  Log out  </a>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<main>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12" style="text-align: center;margin-top: 1em">
-                <h1>
-                    List Balloons
-                </h1>
-                <h4>
-                    Select one to start an order
-                </h4>
-                <hr>
-            </div>
-        </div>
-        <br>
-
-        <div class="row">
-            <div class="col-md-5">
-<!--                <div th:if="${hasError}">-->
-<!--                    <div th:text="${error}"></div>-->
-<!--                </div>-->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <a class="btn btn-outline-warning" href="/ordersList"><i class="fa fa-search" aria-hidden="true"></i> Search orders by id</a>
-
-                        <a th:href="@{'/balloons/add-form'}"
-                           class="btn btn-outline-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Add New Balloon</a>
-
-                    </div>
-                </div>
-                <form th:method="post" id="form1" th:action="@{/}">
-                    <h2>Choose balloon color:</h2>
-                    <div class="form-group">
-<!--                        <ul th:each="balloon:${balloons}" style="list-style-type: none;">-->
-<!--                            <li class="form-control" style="min-height: 3em">-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col-md-8">-->
-<!--                                        <input style="margin: 0 0.5em 0"-->
-<!--                                               th:type="radio"-->
-<!--                                               th:name="color"-->
-<!--                                               th:value="${balloon.getName()}"-->
-<!--                                               th:text="${balloon.getName()}">-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-2">-->
-<!--                                        <a th:href="@{'/balloons/edit-form/{id}' (id=${balloon.getId()})}"-->
-<!--                                           class="btn btn-sm btn-outline-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</a>-->
-<!--                                    </div>-->
-<!--                                    <div class="col-md-2">-->
-<!--                                        <a th:href="@{'/balloons/delete/{id}' (id=${balloon.getId()})}"-->
-<!--                                           class="btn btn-sm btn-outline-danger"><i class="fa fa-trash-o" aria-hidden="true"></i>  Delete</a>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-                    </div>
-                    <br/>
-                    <button  type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-                </form>
-            </div>
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;margin-top: 1em">
+            <h1>
+                List Books
+            </h1>
+            <h4>
+            </h4>
+            <hr>
         </div>
     </div>
-</main>
-</body>
-</html>
+    <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <!--                <div th:if="${hasError}">-->
+            <!--                    <div th:text="${error}"></div>-->
+            <!--                </div>-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+<!--                    <a class="btn btn-outline-warning" href="/bookList"><i class="fa fa-search" aria-hidden="true"></i> Search orders by id</a>-->
+
+<!--                    <a th:href="@{'/balloons/add-form'}"-->
+<!--                       class="btn btn-outline-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Add New Balloon</a>-->
+
+                </div>
+            </div>
+            <form th:method="post" id="form1" th:action="@{/bookAvailableList}">
+                <h2>Choose Available Book</h2>
+                <div class="form-group">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>  </th>
+                                <th> Seriski Broj </th>
+                                <th> Naslov </th>
+                                <th> Broj Strani </th>
+                                <th> Avtor </th>
+                                <th> Objavena Na Nastan Na Datum </th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr  th:each="book:${bookList}">
+                                    <td>
+                                        <input style="margin: 0 0.5em 0"
+                                            th:type="radio"
+                                            th:name="color"
+                                            th:value="${book.getSeriskiBroj()}">
+                                    </td>
+                                    <td th:text="${book.getSeriskiBroj()}"></td>
+                                    <td th:text="${book.getSeriskiBroj()}"></td>
+                                    <td th:text="${book.getSeriskiBroj()}"></td>
+                                    <td th:text="${book.getAvtor()}"></td>
+                                    <td th:text="${book.getSeriskiBroj()}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <br/>
+                <button  type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+            </form>
+        </div>
+    </div>
+</div>
