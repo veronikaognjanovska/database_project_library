@@ -3,10 +3,8 @@
     <div class="row">
         <div class="col-md-12" style="text-align: center;margin-top: 1em">
             <h1>
-                List Books
+                Welcome
             </h1>
-            <h4>
-            </h4>
             <hr>
         </div>
     </div>
@@ -24,48 +22,27 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-12">
-<!--                    <a class="btn btn-outline-warning" href="/bookList"><i class="fa fa-search" aria-hidden="true"></i> Search orders by id</a>-->
+                    <a class="btn btn-outline-warning" href="/bookAllList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List All Books </a>
 
-<!--                    <a th:href="@{'/balloons/add-form'}"-->
-<!--                       class="btn btn-outline-success"><i class="fa fa-plus-square-o" aria-hidden="true"></i>  Add New Balloon</a>-->
+                    <a class="btn btn-outline-warning" href="/bookNumberList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List Number/Count Books </a>
 
+                    <a class="btn btn-outline-warning" href="/momentalniPozajmiciList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Momentalni Pozajmici </a>
+                </div>
+
+                <br>
+                
+                <div class="col-md-12">
+                    <a class="btn btn-outline-info" href="/najchestoIznajmuvaniKnigiPoMesec">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Najchesto Iznajmuvani Knigi Po Mesec </a>
+
+                    <a class="btn btn-outline-warning" href="/prosechnoDocnenjeZaVrakanje">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Prosechno Docnenje Za Vrakanje </a>
                 </div>
             </div>
-            <form th:method="post" id="form1" th:action="@{/bookAvailableList}">
-                <h2>Choose Available Book</h2>
-                <div class="form-group">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>  </th>
-                                <th> Seriski Broj </th>
-                                <th> Naslov </th>
-                                <th> Broj Strani </th>
-                                <th> Avtor </th>
-                                <th> Objavena Na Nastan Na Datum </th>
-
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr  th:each="book:${bookList}">
-                                    <td>
-                                        <input style="margin: 0 0.5em 0"
-                                            th:type="radio"
-                                            th:name="color"
-                                            th:value="${book.getSeriskiBroj()}">
-                                    </td>
-                                    <td th:text="${book.getSeriskiBroj()}"></td>
-                                    <td th:text="${book.getSeriskiBroj()}"></td>
-                                    <td th:text="${book.getSeriskiBroj()}"></td>
-                                    <td th:text="${book.getAvtor()}"></td>
-                                    <td th:text="${book.getSeriskiBroj()}"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                </div>
-                <br/>
-                <button  type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
-            </form>
         </div>
     </div>
+
 </div>

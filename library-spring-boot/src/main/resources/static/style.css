@@ -1,9 +1,7 @@
 
-main{
-  width: 800px;
-  margin: auto !important;
+div.container{
+  display: table;
 }
-
 .bg-my{
   background-color: #00880033;
 }

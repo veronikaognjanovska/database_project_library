@@ -12,11 +12,11 @@
 -- Зачленување на даден нов член  – пополнување форма за додавање нов член во база
 
 -- ПОГЛЕДИ
--- Прегед на сите книги
---  книги i kolku se dostapni
--- Прегед на сите книги i broj kolku se dostapni moemntalno
+-- Прегед на сите книги *
+--  книги i kolku se dostapni *
+-- Прегед на сите книги i broj kolku se dostapni moemntalno - spoj na prvite 2
 -- Преглед на сите позајмици
--- Преглед на моментални сите позајмици
+-- Преглед на моментални сите позајмици - koi se available *
 
 
 
@@ -64,7 +64,7 @@ select * from chlen;
 
 
 -- ПОГЛЕДИ
--- Прегед на сите книги
+-- Прегед на сите книги -- done
 create view pregled_na_site_knigi as
     select k.seriski_broj, k.naslov, k.broj_strani, a.ime || ' ' ||a.prezime as avtor, n.datum as objavena_na_nastan_na_datum
     from kniga as k
@@ -75,10 +75,11 @@ create view pregled_na_site_knigi as
 select * from pregled_na_site_knigi;
 
 
---  книги i kolku se dostapni
+--  книги i kolku se dostapni -- done
 create view dostapnost_na_knigi as
-    select seriski_broj,count(inventaren_broj) as VKUPNO,count(case  p.status when 'AVAILABLE' then 1 else null end) as AVAILABLE
+    select k.seriski_broj,count(inventaren_broj) as VKUPNO,count(case  p.status when 'AVAILABLE' then 1 else null end) as AVAILABLE
     from  primerok p
+        full join kniga k on k.seriski_broj = p.seriski_broj
     group by 1
     order by 1 asc ;
     ;
@@ -134,7 +135,7 @@ create view site_pozajmici as
 select * from site_pozajmici;
 
 
--- Преглед на моментални сите позајмици
+-- Преглед на моментални сите позајмици -- done
 create view momentalni_pozajmici as
     select chlen, chlen_telefonski_broj, datum_na_zachlenuvanje, seriski_broj, inventaren_broj, naslov, avtor, datum_pozajmuvanje, vraboten, vraboten_telefonski_broj, datum_na_vrabotuvanje
     from site_pozajmici poz

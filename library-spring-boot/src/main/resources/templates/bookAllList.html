@@ -1,0 +1,50 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;margin-top: 1em">
+            <h1>
+                List All Books
+            </h1>
+            <hr>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-5">
+            <!--                <div th:if="${hasError}">-->
+            <!--                    <div th:text="${error}"></div>-->
+            <!--                </div>-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-outline-warning" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> BACK</a>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th> Seriski Broj </th>
+                    <th> Naslov </th>
+                    <th> Broj Strani </th>
+                    <th> Avtor </th>
+                    <th> Objavena Na Nastan Na Datum </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  th:each="book:${bookAllList}">
+                    <td th:text="${book.getSeriskiBroj()}"></td>
+                    <td th:text="${book.getNaslov()}"></td>
+                    <td th:text="${book.getBrojStrani()}"></td>
+                    <td th:text="${book.getAvtor()}"></td>
+                    <td th:text="${book.getObjavenaDatum()}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <br/>
+        </div>
+
+    </div>
+</div>

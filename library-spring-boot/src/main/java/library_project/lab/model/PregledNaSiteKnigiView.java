@@ -7,7 +7,7 @@ import org.hibernate.annotations.Immutable;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
-import java.util.UUID;
+
 
 @Data
 @Entity
