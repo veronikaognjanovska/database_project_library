@@ -1,4 +1,4 @@
-package library_project.lab.model;
+package library_project.lab.model.helpers;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

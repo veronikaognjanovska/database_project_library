@@ -1,15 +1,12 @@
 package library_project.lab.repository;
 
-import library_project.lab.model.DateCustom;
 import library_project.lab.model.Primerok;
-import library_project.lab.model.PrimerokKey;
-import library_project.lab.model.enumeration.STATUS_PRIMEROK;
+import library_project.lab.model.keys.PrimerokKey;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
 import java.util.Optional;
 
 @Repository

@@ -4,6 +4,7 @@ import library_project.lab.model.*;
 import library_project.lab.model.enumeration.STATUS_POZAJMICA;
 import library_project.lab.model.enumeration.STATUS_PRIMEROK;
 import library_project.lab.model.exception.AlreadyExistsException;
+import library_project.lab.model.helpers.DateCustom;
 import library_project.lab.repository.PozajmicaRepository;
 import library_project.lab.service.ChlenService;
 import library_project.lab.service.PozajmicaService;
@@ -13,10 +14,7 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Optional;
 
 @Service

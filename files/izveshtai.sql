@@ -29,7 +29,7 @@ select pregled.seriski_broj, count(distinct p) as count, pregled.naslov,pregled.
     group by pregled.seriski_broj,3,4,5,6
     order by 2 desc
 ;
--- Најчесто изнајмувани книги по месец
+-- Најчесто изнајмувани книги по месец -- done
 select najbarani_knigi_count.mesec, najbarani_knigi_count.seriski_broj,
         k.naslov,k.broj_strani,k.avtor,k.objavena_na_nastan_na_datum
     from (with fullCount(mesec,seriski_broj,count) as
@@ -82,7 +82,7 @@ select c.ime || ' ' || c.prezime as chlen, count(datum_pozajmuvanje)
 ;
 
 
--- просечно доцнење со враќање по член после 2 недели
+-- просечно доцнење со враќање по член после 2 недели -- done
 with docniCount(embg,docniAvg) as
     (
         select p.chlen_embg, abs(avg(p.datum_pozajmuvanje-(case when p.datum_vrakjanje is not null then p.datum_vrakjanje else now()::date end))) as docni_za
@@ -91,7 +91,7 @@ with docniCount(embg,docniAvg) as
     )
 select c.embg, c2.ime || ' ' || c2.prezime as chlen,
        c2.telefonski_broj as chlen_telefonski_broj,
-       d.docniAvg * interval '1 day' as prosechno_docnenje
+       extract(day from (d.docniAvg * interval '1 day')) || ' days' as prosechno_docnenje
     from chlen c
     left join chovek c2 on c.embg = c2.embg
     left join docniCount d on c.embg = d.embg

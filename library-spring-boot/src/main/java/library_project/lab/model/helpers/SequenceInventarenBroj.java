@@ -1,4 +1,4 @@
-package library_project.lab.model;
+package library_project.lab.model.helpers;
 
 public class SequenceInventarenBroj {
     private static SequenceInventarenBroj instance = new SequenceInventarenBroj();

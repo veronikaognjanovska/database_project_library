@@ -1,4 +1,4 @@
-package library_project.lab.model;
+package library_project.lab.model.keys;
 
 import com.sun.istack.NotNull;
 import lombok.Data;

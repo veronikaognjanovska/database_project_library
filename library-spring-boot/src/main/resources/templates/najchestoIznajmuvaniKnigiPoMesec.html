@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12" style="text-align: center;margin-top: 1em">
             <h1>
-                List All Books
+                Form: Najchesto Iznajmuvani Knigi Po Mesec
             </h1>
             <hr>
         </div>
@@ -26,6 +26,7 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
+                    <th> Mesec </th>
                     <th> Seriski Broj </th>
                     <th> Naslov </th>
                     <th> Broj Strani </th>
@@ -34,12 +35,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr  th:each="book:${bookAllList}">
+                <tr  th:each="book:${najchestoIznajmuvaniKnigiPoMesec}">
+                    <td th:text="${book.getMesec()}"></td>
                     <td th:text="${book.getSeriskiBroj()}"></td>
                     <td th:text="${book.getNaslov()}"></td>
                     <td th:text="${book.getBrojStrani()}"></td>
                     <td th:text="${book.getAvtor()}"></td>
-                    <td th:text="${book.getObjavenaDatum()}"></td>
+                    <td th:text="${book.getObjavenaNaNastanNaDatum()}"></td>
                 </tr>
                 </tbody>
             </table>

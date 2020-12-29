@@ -1,4 +1,4 @@
-package library_project.lab.model;
+package library_project.lab.model.views;
 
 import lombok.Data;
 import org.hibernate.annotations.Immutable;

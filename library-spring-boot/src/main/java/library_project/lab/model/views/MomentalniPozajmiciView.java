@@ -1,11 +1,11 @@
-package library_project.lab.model;
+package library_project.lab.model.views;
 
+import library_project.lab.model.keys.MomentalniPozajmiciKey;
 import lombok.Data;
 import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 
 
 @Data
@@ -19,15 +19,15 @@ import java.time.ZonedDateTime;
                 columns = {
                         @ColumnResult(name = "chlen"),
                         @ColumnResult(name = "chlen_telefonski_broj"),
-                        @ColumnResult(name = "datum_na_zachlenuvanje", type=ZonedDateTime.class),
+                        @ColumnResult(name = "datum_na_zachlenuvanje", type=String.class),
                         @ColumnResult(name = "seriski_broj", type = Long.class),
                         @ColumnResult(name = "inventaren_broj", type = Long.class),
                         @ColumnResult(name = "naslov"),
-                        @ColumnResult(name = "author"),
-                        @ColumnResult(name = "datum_pozajmuvanje", type=ZonedDateTime.class),
+                        @ColumnResult(name = "avtor"),
+                        @ColumnResult(name = "datum_pozajmuvanje", type=String.class),
                         @ColumnResult(name = "vraboten"),
                         @ColumnResult(name = "vraboten_telefonski_broj"),
-                        @ColumnResult(name = "datum_na_vrabotuvanje", type=ZonedDateTime.class)
+                        @ColumnResult(name = "datum_na_vrabotuvanje", type= String.class)
                 }))
 public class MomentalniPozajmiciView implements Serializable {
 
@@ -38,7 +38,7 @@ public class MomentalniPozajmiciView implements Serializable {
     private String chlenTelefonskiBroj;
 
     @Column(name = "datum_na_zachlenuvanje")
-    private ZonedDateTime datumNaZachlenuvanje;
+    private String datumNaZachlenuvanje;
 
     @Id
     @Column(name = "seriski_broj")
@@ -53,7 +53,7 @@ public class MomentalniPozajmiciView implements Serializable {
 
     @Id
     @Column(name = "datum_pozajmuvanje")
-    private ZonedDateTime datumPozajmuvanje;
+    private String datumPozajmuvanje;
 
     @Column(name = "vraboten")
     private String vraboten;
@@ -62,7 +62,7 @@ public class MomentalniPozajmiciView implements Serializable {
     private String vrabotenTelefonskiBroj;
 
     @Column(name = "datum_na_vrabotuvanje")
-    private ZonedDateTime datumNaVrabotuvanje;
+    private String datumNaVrabotuvanje;
 
 
     public MomentalniPozajmiciView() {}

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12" style="text-align: center;margin-top: 1em">
             <h1>
-                List All Books
+                Form: Prosechno Docnenje Za Vrakanje
             </h1>
             <hr>
         </div>
@@ -26,20 +26,18 @@
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th> Seriski Broj </th>
-                    <th> Naslov </th>
-                    <th> Broj Strani </th>
-                    <th> Avtor </th>
-                    <th> Objavena Na Nastan Na Datum </th>
+                    <th> EMBG Chlen </th>
+                    <th> Chlen </th>
+                    <th> Chlen Telefonski Broj</th>
+                    <th> Prosechno Docnenje </th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr  th:each="book:${bookAllList}">
-                    <td th:text="${book.getSeriskiBroj()}"></td>
-                    <td th:text="${book.getNaslov()}"></td>
-                    <td th:text="${book.getBrojStrani()}"></td>
-                    <td th:text="${book.getAvtor()}"></td>
-                    <td th:text="${book.getObjavenaDatum()}"></td>
+                <tr  th:each="book:${prosechnoDocnenjeZaVrakanje}">
+                    <td th:text="${book.getEmbg()}"></td>
+                    <td th:text="${book.getChlen()}"></td>
+                    <td th:text="${book.getChlenTelefonskiBroj()}"></td>
+                    <td th:text="${book.getProsechnoDocnenje()}"></td>
                 </tr>
                 </tbody>
             </table>

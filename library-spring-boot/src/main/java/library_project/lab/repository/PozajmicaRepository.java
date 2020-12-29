@@ -2,14 +2,12 @@ package library_project.lab.repository;
 
 
 import library_project.lab.model.Pozajmica;
-import library_project.lab.model.PozajmicaKey;
+import library_project.lab.model.keys.PozajmicaKey;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.ZonedDateTime;
-import java.util.Date;
 import java.util.Optional;
 
 @Repository

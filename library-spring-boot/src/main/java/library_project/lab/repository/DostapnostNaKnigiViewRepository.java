@@ -1,6 +1,6 @@
 package library_project.lab.repository;
 
-import library_project.lab.model.DostapnostNaKnigiView;
+import library_project.lab.model.views.DostapnostNaKnigiView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

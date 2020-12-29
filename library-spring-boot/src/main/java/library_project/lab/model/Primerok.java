@@ -1,6 +1,7 @@
 package library_project.lab.model;
 
 import library_project.lab.model.enumeration.STATUS_PRIMEROK;
+import library_project.lab.model.keys.PrimerokKey;
 import lombok.Data;
 
 import javax.persistence.*;

@@ -1,6 +1,6 @@
 package library_project.lab.repository;
 
-import library_project.lab.model.MomentalniPozajmiciView;
+import library_project.lab.model.views.MomentalniPozajmiciView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

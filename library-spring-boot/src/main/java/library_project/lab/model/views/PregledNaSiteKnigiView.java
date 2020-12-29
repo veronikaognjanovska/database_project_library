@@ -1,12 +1,10 @@
-package library_project.lab.model;
+package library_project.lab.model.views;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.hibernate.annotations.Immutable;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
 
 
 @Data
@@ -23,8 +21,8 @@ import java.time.ZonedDateTime;
                         @ColumnResult(name = "seriski_broj", type = Long.class),
                         @ColumnResult(name = "naslov"),
                         @ColumnResult(name = "broj_strani", type = Long.class),
-                        @ColumnResult(name = "authorName"),
-                        @ColumnResult(name = "objavena_na_nastan_na_datum", type=ZonedDateTime.class)
+                        @ColumnResult(name = "avtor"),
+                        @ColumnResult(name = "objavena_na_nastan_na_datum", type=String.class)
                 }))
 public class PregledNaSiteKnigiView implements Serializable {
 
@@ -40,7 +38,7 @@ public class PregledNaSiteKnigiView implements Serializable {
     private String avtor;
 
     @Column(name = "objavena_na_nastan_na_datum")
-    private ZonedDateTime objavenaDatum;
+    private String objavenaDatum;
 
     public PregledNaSiteKnigiView() {}
 

@@ -1,6 +1,8 @@
-package library_project.lab.model;
+package library_project.lab.model.keys;
 
 import com.sun.istack.NotNull;
+import library_project.lab.model.Chlen;
+import library_project.lab.model.Vraboten;
 import library_project.lab.model.enumeration.STATUS_POZAJMICA;
 import lombok.Data;
 
