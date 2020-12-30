@@ -8,6 +8,7 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,5 +41,10 @@ public class AvtorServiceImpl implements AvtorService {
             throw new NotFound();
         }
         return avtor.get();
+    }
+
+    @Override
+    public List<Avtor> findAll() {
+        return avtorRepository.findAll();
     }
 }

@@ -1,0 +1,95 @@
+
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;margin-top: 1em">
+            <h1>
+                Vnesi primerok i/ili kniga
+            </h1>
+            <hr>
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${hasError}">
+                <div class="alert alert-danger" role="alert" th:text="${error}"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div th:if="${hasSuccess}">
+                <div class="alert alert-success" role="alert" th:text="${success}"></div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-outline-warning mb-15" href="/"><i class="fa fa-arrow-left" aria-hidden="true"></i> BACK</a>
+        </div>
+
+        <div class="col-md-6">
+            <h5>
+                Vnesi primerok
+            </h5>
+            <form th:action="@{'/forms/primerok'}" th:method="post" style="width: 65%;">
+                <div class="form-group">
+                    <label for="seriskiBroj">Seriski broj </label>
+                    <select name="seriskiBroj" id="seriskiBroj" class="form-control">
+                        <option th:each="sb : ${knigi}"
+                                th:value="${sb.getSeriskiBroj()}"
+                                th:text="${sb.getSeriskiBroj()}">
+                        </option>
+                    </select>
+                </div>
+                <br>
+                <button id="submit1" type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+            </form>
+        </div>
+        <br><br>
+        <div class="col-md-6">
+            <h5>
+                Vnesi kniga
+            </h5>
+            <form th:action="@{'/forms/kniga'}" th:method="post" >
+                <div class="form-group">
+                    <label for="naslov">Naslov </label>
+                    <input type="text" id="naslov" name="naslov" class="form-control"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="strani"> Broj na Strani</label>
+                    <input type="text" id="strani" name="strani" class="form-control"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="nastan">Nastan </label>
+                    <select name="nastan" id="nastan" class="form-control">
+                        <option th:each="n : ${nastani}"
+                                th:value="${n.getNastanId()}"
+                                th:text="${n.getNastanId()}">
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="avtor">Avtor </label>
+                    <select name="avtor" id="avtor" class="form-control">
+                        <option th:each="a : ${avtori}"
+                                th:value="${a.getAvtorId()}"
+                                th:text="${a.getAvtorId()}">
+                        </option>
+                    </select>
+                </div>
+                <br>
+                <button id="submit2" type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+
+            </form>
+        </div>
+
+    </div>
+
+</div>

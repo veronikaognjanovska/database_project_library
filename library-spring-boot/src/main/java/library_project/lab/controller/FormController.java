@@ -2,7 +2,10 @@
 package library_project.lab.controller;
 
 import library_project.lab.model.Chlen;
+import library_project.lab.model.Kniga;
 import library_project.lab.model.Pozajmica;
+import library_project.lab.model.Primerok;
+import library_project.lab.model.enumeration.STATUS_PRIMEROK;
 import library_project.lab.model.exception.AlreadyExistsException;
 import library_project.lab.model.helpers.DateCustom;
 import library_project.lab.repository.MomentalniPozajmiciViewRepository;
@@ -12,17 +15,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+
 @Controller
 @RequestMapping("/forms")
 public class FormController {
 
-
+    private final KnigaService knigaService ;
+    private final PrimerokService primerokService;
+    private final AvtorService avtorService;
+    private final NastanService nastanService;
     private final ChlenService chlenService;
     private final VrabotenService vrabotenService;
     private final PozajmicaService pozajmicaService;
     private final MomentalniPozajmiciViewRepository momentalniPozajmiciViewRepository;
 
-    public FormController(ChlenService chlenService, VrabotenService vrabotenService, PozajmicaService pozajmicaService, MomentalniPozajmiciViewRepository momentalniPozajmiciViewRepository) {
+    public FormController(KnigaService knigaService, PrimerokService primerokService, AvtorService avtorService, NastanService nastanService, ChlenService chlenService, VrabotenService vrabotenService, PozajmicaService pozajmicaService, MomentalniPozajmiciViewRepository momentalniPozajmiciViewRepository) {
+        this.knigaService = knigaService;
+        this.primerokService = primerokService;
+        this.avtorService = avtorService;
+        this.nastanService = nastanService;
         this.chlenService = chlenService;
         this.vrabotenService = vrabotenService;
         this.pozajmicaService = pozajmicaService;
@@ -56,7 +68,7 @@ public class FormController {
                     inventaren_broj,
                     chlenEMBG,
                     vrabotenEMBG);
-            return "redirect:/";
+            return "redirect:/?success=Iznajmuvanjeto kniga e uspeshno";
         }catch (IllegalArgumentException | AlreadyExistsException | NotFound ex){
             return "redirect:/?error=Pozajmicata Ne Moze Da Se Napravi";
         }
@@ -87,8 +99,8 @@ public class FormController {
                     inventaren_broj,
                     chlenEMBG,
                     vrabotenEMBG,
-                    DateCustom.getZonedDateTimeFromDateString(date));//(String.format("%02d-%02d-%d",day,month,year))
-            return "redirect:/";
+                    DateCustom.getZonedDateTimeFromDateStringDateDate(date));//(String.format("%02d-%02d-%d",day,month,year))
+            return "redirect:/?success=Vrakjanjeto kniga e uspeshno";
         }catch (Exception ex){
             return "redirect:/?error=Pozajmicata Ne Moze Da Se Zatvori";
         }
@@ -119,9 +131,58 @@ public class FormController {
                     adresa_na_ziveenje,telefonski_broj,
                     DateCustom.getDateNow());
 
-            return "redirect:/";
+            return "redirect:/?success="+chlen.getImePrezime()+" e uspeshno zachlenet";
         }catch (Exception ex){
-            return "redirect:/?error=Pozajmicata Ne Moze Da Se Zatvori";
+            return "redirect:/?error=Zachlenuvanjeto e neuspeshno";
+        }
+    }
+
+
+    @GetMapping("/primerok-form")
+    public String getPrimerokFormPage(@RequestParam(required = false) String success,
+                                      @RequestParam(required = false) String error, Model model){
+        model.addAttribute("bodyContent","primerok-form");
+        model.addAttribute("knigi",knigaService.findAll());
+        model.addAttribute("nastani",nastanService.findAll());
+        model.addAttribute("avtori",avtorService.findAll());
+        if(success!=null && !success.isEmpty()){
+            model.addAttribute("hasSuccess",true);
+            model.addAttribute("success",success);
+        }
+        if(error!=null && !error.isEmpty()){
+            model.addAttribute("hasError",true);
+            model.addAttribute("error",error);
+        }
+        return "master-template";
+    }
+
+    @PostMapping("/primerok")
+    public String getPrimerokPage(@RequestParam Long seriskiBroj){
+        try{
+            if( seriskiBroj==null ){
+                throw new IllegalArgumentException();
+            }
+            Primerok primerok = primerokService.save(seriskiBroj, STATUS_PRIMEROK.AVAILABLE);
+            return "redirect:/?success=Primerokot e dodaden so seriski broj "
+                    +seriskiBroj+" i inventaren broj "+primerok.getPrimerokKey().getInventaren_broj();
+        }catch (Exception ex){
+            return "redirect:/?error=Primerokot NE e dodaden";
+        }
+    }
+
+    @PostMapping("/kniga")
+    public String getKnigaPage(@RequestParam String naslov,@RequestParam Integer strani,
+                               @RequestParam Long nastan,@RequestParam Long avtor){
+        try{
+            if( naslov==null || strani==null ||
+                    avtor==null ){
+                throw new IllegalArgumentException();
+            }
+            Kniga kniga = knigaService.save(naslov, strani,nastan);
+            knigaService.addAvtorToKniga(avtor,kniga.getSeriskiBroj());
+            return "redirect:/forms/primerok-form?success=Knigata e dodaden so seriski broj "+kniga.getSeriskiBroj();
+        }catch (Exception ex){
+            return "redirect:/?error=Knigata NE e dodadena";
         }
     }
 

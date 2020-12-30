@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,6 +49,11 @@ public class NastanServiceImpl implements NastanService {
             throw new NotFound();
         }
         return nastan.get();
+    }
+
+    @Override
+    public List<Nastan> findAll() {
+        return nastanRepository.findAll();
     }
 
 

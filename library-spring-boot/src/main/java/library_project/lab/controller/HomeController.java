@@ -19,29 +19,30 @@ import java.time.format.DateTimeFormatter;
 @RequestMapping("/")
 public class HomeController {
 
-    private final ChovekService chovekService;
-    private final VrabotenService vrabotenService;
-    private final ChlenService  chlenService;
-    private final AvtorService avtorService;
-    private final NastanService nastanService;
-    private final KnigaService knigaService ;
-    private final PrimerokService   primerokService;
-    private final PozajmicaService pozajmicaService;
-
-    public HomeController(ChovekService chovekService, VrabotenService vrabotenService, ChlenService chlenService, AvtorService avtorService, NastanService nastanService, KnigaService knigaService, PrimerokService primerokService, PozajmicaService pozajmicaService) {
-        this.chovekService = chovekService;
-        this.vrabotenService = vrabotenService;
-        this.chlenService = chlenService;
-        this.avtorService = avtorService;
-        this.nastanService = nastanService;
-        this.knigaService = knigaService;
-        this.primerokService = primerokService;
-        this.pozajmicaService = pozajmicaService;
-    }
+//    private final ChovekService chovekService;
+//    private final VrabotenService vrabotenService;
+//    private final ChlenService  chlenService;
+//    private final AvtorService avtorService;
+//    private final NastanService nastanService;
+//    private final KnigaService knigaService ;
+//    private final PrimerokService   primerokService;
+//    private final PozajmicaService pozajmicaService;
+//
+//    public HomeController(ChovekService chovekService, VrabotenService vrabotenService, ChlenService chlenService, AvtorService avtorService, NastanService nastanService, KnigaService knigaService, PrimerokService primerokService, PozajmicaService pozajmicaService) {
+//        this.chovekService = chovekService;
+//        this.vrabotenService = vrabotenService;
+//        this.chlenService = chlenService;
+//        this.avtorService = avtorService;
+//        this.nastanService = nastanService;
+//        this.knigaService = knigaService;
+//        this.primerokService = primerokService;
+//        this.pozajmicaService = pozajmicaService;
+//    }
 
 
     @GetMapping
-    public String getIndexPage(@RequestParam(required = false) String error, Model model){
+    public String getIndexPage(@RequestParam(required = false) String error,
+                               @RequestParam(required = false) String success,Model model){
 
 //         try {
 ////             Chovek chovek  = chovekService.save("1212999000455","name","surname",
@@ -76,6 +77,10 @@ public class HomeController {
 //             String error = e.getMessage();
 //        }
 
+        if(success!=null && !success.isEmpty()){
+            model.addAttribute("hasSuccess",true);
+            model.addAttribute("success",success);
+        }
         if(error!=null && !error.isEmpty()){
             model.addAttribute("hasError",true);
             model.addAttribute("error",error);

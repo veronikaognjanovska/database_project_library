@@ -8,12 +8,14 @@ import library_project.lab.model.exception.AlreadyExistsException;
 import library_project.lab.repository.KnigaRepository;
 import library_project.lab.service.AvtorService;
 import library_project.lab.service.KnigaService;
+import library_project.lab.service.NastanService;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,10 +23,12 @@ public class KnigaServiceImpl implements KnigaService {
 
     private final KnigaRepository knigaRepository;
     private final AvtorService avtorService;
+    private final NastanService nastanService;
 
-    public KnigaServiceImpl(KnigaRepository knigaRepository, AvtorService avtorService, EntityManager entityManager) {
+    public KnigaServiceImpl(KnigaRepository knigaRepository, AvtorService avtorService, NastanService nastanService, EntityManager entityManager) {
         this.knigaRepository = knigaRepository;
         this.avtorService = avtorService;
+        this.nastanService = nastanService;
         this.entityManager = entityManager;
     }
 
@@ -34,16 +38,17 @@ public class KnigaServiceImpl implements KnigaService {
 
     @Override
     @Transactional
-    public Kniga save(String naslov, Integer broj_strani, Nastan nastan_id)
-            throws IllegalArgumentException,AlreadyExistsException{
+    public Kniga save(String naslov, Integer broj_strani, Long nastan_id)
+            throws IllegalArgumentException, AlreadyExistsException, NotFound {
 
         if (naslov==null || naslov.isEmpty() ) {
             throw new IllegalArgumentException();
         }
-        if(knigaRepository.findByNaslovAndBrojStraniAndNastan(naslov, broj_strani, nastan_id).isPresent()){
+        Nastan nastan=nastanService.findById(nastan_id);
+        if(knigaRepository.findByNaslovAndBrojStraniAndNastan(naslov, broj_strani, nastan).isPresent()){
             throw new AlreadyExistsException();
         }
-        Kniga c = new Kniga(naslov, broj_strani, nastan_id);
+        Kniga c = new Kniga(naslov, broj_strani, nastan);
         knigaRepository.save(c);
         return c;
     }
@@ -91,6 +96,11 @@ public class KnigaServiceImpl implements KnigaService {
         }
         knigaRepository.updateNastanId(nastanId,seriskiBroj);
         entityManager.flush();
+    }
+
+    @Override
+    public List<Kniga> findAll() {
+        return knigaRepository.findAll();
     }
 
 }

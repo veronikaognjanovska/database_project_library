@@ -30,5 +30,10 @@ public class DateCustom {
         ZonedDateTime dateTime = ZonedDateTime.parse(dateString+" 00:00:00 UTC", formatter);
         return dateTime;
     }
+    public static ZonedDateTime getZonedDateTimeFromDateStringDateDate(String dateString){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss z");
+        ZonedDateTime dateTime = ZonedDateTime.parse(dateString+" 00:00:00 UTC", formatter);
+        return dateTime;
+    }
 
 }

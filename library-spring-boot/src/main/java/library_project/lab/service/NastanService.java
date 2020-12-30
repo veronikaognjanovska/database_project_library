@@ -6,8 +6,11 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 
 public interface NastanService {
     Nastan save(ZonedDateTime date, String embg_vraboten_glaven) throws NotFound;
     Nastan findById(Long id) throws NotFound;
+
+    List<Nastan> findAll();
 }

@@ -23,10 +23,14 @@ public class Nastan implements Serializable {
     @JoinColumn(name="embg_vraboten_glaven")
     private Vraboten embgVrabotenGlaven;
 
+    public Long getNastanId(){return nastan_id;}
+
     public Nastan() {}
 
     public Nastan(ZonedDateTime date, Vraboten embg_vraboten_glaven) {
         this.datum = date;
         this.embgVrabotenGlaven = embg_vraboten_glaven;
     }
+
+
 }

@@ -6,60 +6,98 @@
                 Welcome
             </h1>
             <hr>
-            <div class="div-slideshow">
-                <img src="http://dummyimage.com/280x200/56AD30/fff.png&text=1" />
-                <img src="http://dummyimage.com/280x200/1560f0/fff.png&text=2" />
-                <img src="http://dummyimage.com/280x200/C03229/fff.png&text=3" />
-            </div>
+
         </div>
     </div>
     <br>
 
-    <div class="row">
-        <div class="col-md-5">
-            <div th:if="${hasError}">
-                <div class="alert alert-danger" role="alert" th:text="${error}"></div>
-            </div>
-        </div>
-    </div>
+
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div th:if="${hasError}">
+                        <div class="alert alert-danger" role="alert" th:text="${error}"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div th:if="${hasSuccess}">
+                        <div class="alert alert-success" role="alert" th:text="${success}"></div>
+                    </div>
+                </div>
+            </div>
+            <br>
             <div class="row">
                 <div class="col-md-12">
                     <a class="btn btn-outline-success" href="/forms/iznajmuvanje-form">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Iznajmuvanje Kniga Form </a>
-
+                        <i class="fa fa-plus" aria-hidden="true"></i> Iznajmuvanje Kniga Form
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-md-12">
                     <a class="btn btn-outline-success" href="/forms/vrakanje-form">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Vrakanje Kniga Form  </a>
-
+                        <i class="fa fa-plus" aria-hidden="true"></i> Vrakanje Kniga Form
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-md-12">
                     <a class="btn btn-outline-success" href="/forms/zachlenuvanje-form">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Zachlenuvanje Form  </a>
+                        <i class="fa fa-plus" aria-hidden="true"></i> Zachlenuvanje Form
+                    </a>
                 </div>
-
-                <br><br><br>
-
+                <br><br>
                 <div class="col-md-12">
-                    <a class="btn btn-outline-warning" href="/views/bookAllList">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List All Books </a>
-
-                    <a class="btn btn-outline-warning" href="/views/bookNumberList">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List Number/Count Books </a>
-
-                    <a class="btn btn-outline-warning" href="/views/momentalniPozajmiciList">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Momentalni Pozajmici </a>
-                </div>
-
-                <br><br><br>
-
-                <div class="col-md-12">
-                    <a class="btn btn-outline-info" href="/reports/najchestoIznajmuvaniKnigiPoMesec">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Najchesto Iznajmuvani Knigi Po Mesec </a>
-
-                    <a class="btn btn-outline-info" href="/reports/prosechnoDocnenjeZaVrakanje">
-                        <i class="fa fa-info-circle" aria-hidden="true"></i> Prosechno Docnenje Za Vrakanje </a>
+                    <a class="btn btn-outline-success" href="/forms/primerok-form">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Dodavanje nov primerok
+                    </a>
                 </div>
             </div>
+
+                <br><br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-outline-warning" href="/views/bookAllList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List All Books
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-md-12">
+                    <a class="btn btn-outline-warning" href="/views/bookNumberList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> List Number/Count Books
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-md-12">
+                    <a class="btn btn-outline-warning" href="/views/momentalniPozajmiciList">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i> Momentalni Pozajmici
+                    </a>
+                </div>
+            </div>
+
+                <br><br>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="btn btn-outline-info" href="/reports/najchestoIznajmuvaniKnigiPoMesec">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Najchesto Iznajmuvani Knigi Po Mesec
+                    </a>
+                </div>
+                <br><br>
+                <div class="col-md-12">
+                    <a class="btn btn-outline-info" href="/reports/prosechnoDocnenjeZaVrakanje">
+                        <i class="fa fa-info-circle" aria-hidden="true"></i> Prosechno Docnenje Za Vrakanje
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 div-slideshow">
+            <img src="images/image1.png" />
+            <img src="images/image2.jpg" />
+            <img src="images/image3.jpg" />
         </div>
     </div>
 
