@@ -24,4 +24,9 @@ public class Vraboten extends Chovek implements Serializable {
         super(embg, ime, prezime, datum_na_ragjanje, adresa_na_ziveenje, telefonski_broj);
         this.datum_na_vrabotuvanje = datum_na_vrabotuvanje;
     }
+
+    public String getImePrezime(){
+        return String.format("%s %s",getIme(),getPrezime());
+    }
+
 }

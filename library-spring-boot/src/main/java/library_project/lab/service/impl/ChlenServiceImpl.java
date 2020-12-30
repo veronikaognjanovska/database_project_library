@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,6 +47,11 @@ public class ChlenServiceImpl implements ChlenService {
             throw new NotFound();
         }
         return chlen.get();
+    }
+
+    @Override
+    public List<Chlen> findAll() {
+        return chlenRepository.findAll();
     }
 
 }

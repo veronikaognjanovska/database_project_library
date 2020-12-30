@@ -9,3 +9,26 @@ div.container{
 .bg-my{
   background-color: #00880033;
 }
+
+/* Slider */
+.div-slideshow { position: relative; }
+.div-slideshow img {
+  position: absolute;
+  top: 0; left: 0;
+  z-index: 3;
+  animation: slideshow 12s linear 0s infinite;
+}
+.div-slideshow img:nth-child(2) {
+  z-index: 2;
+  animation-delay: 4s;
+}
+.div-slideshow img:nth-child(3) {
+  z-index: 1;
+  animation-delay: 8s;
+}
+@keyframes slideshow {
+  25% { opacity: 1;}
+  33.33% { opacity: 0;}
+  91.66% { opacity: 0;}
+  100% { opacity: 1;}
+}

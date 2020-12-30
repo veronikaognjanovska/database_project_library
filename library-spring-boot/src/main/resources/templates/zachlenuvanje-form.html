@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-12">
-            <form th:action="@{'/zachlenuvanje'}" th:method="post" >
+            <form th:action="@{'/forms/zachlenuvanje'}" th:method="post" >
                 <div class="form-group">
                     <label for="embg">EMBG </label>
                     <input type="text" id="embg" name="embg" class="form-control"
@@ -41,13 +41,14 @@
                            required>
                 </div>
                 <div class="form-group">
-                    <label for="vrabotenEMBG">Den Mesec Godina</label>
-                    <input type="text" id="day" name="day" class="form-control" required
-                           style="width: 50px;display: inline-block;">
-                    <input type="text" id="month" name="month" class="form-control" required
-                           style="width: 50px;display: inline-block;">
-                    <input type="text" id="year" name="year" class="form-control" required
-                           style="width: 90px;display: inline-block;">
+                    <label for="date">Den Mesec Godina</label>
+<!--                    <input type="text" id="day" name="day" class="form-control" required-->
+<!--                           style="width: 50px;display: inline-block;">-->
+<!--                    <input type="text" id="month" name="month" class="form-control" required-->
+<!--                           style="width: 50px;display: inline-block;">-->
+<!--                    <input type="text" id="year" name="year" class="form-control" required-->
+<!--                           style="width: 90px;display: inline-block;">-->
+                    <input type="date" id="date" name="date" required>
                 </div>
                 <div class="form-group">
                     <label for="adresa_na_ziveenje">Adresa Na Ziveenje</label>

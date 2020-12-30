@@ -5,9 +5,11 @@ import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 public interface VrabotenService {
     Vraboten save(String embg, String ime, String prezime, ZonedDateTime datum_na_ragjanje, String adresa_na_ziveenje, String telefonski_broj, ZonedDateTime datum_na_vrabotuvanje);
     Vraboten findByEmbg(String embg) throws NotFound;
+    List<Vraboten> findAll();
 }

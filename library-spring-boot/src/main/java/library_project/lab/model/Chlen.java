@@ -25,5 +25,9 @@ public class Chlen extends Chovek implements Serializable {
         this.datum_na_zachlenuvanje = datum_na_zachlenuvanje;
     }
 
+    public String getImePrezime(){
+        return String.format("%s %s",getIme(),getPrezime());
+    }
+
 }
 

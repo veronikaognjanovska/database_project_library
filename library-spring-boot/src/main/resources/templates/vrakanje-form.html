@@ -24,7 +24,7 @@
         </div>
 
         <div class="col-md-12">
-            <form th:action="@{'/vrakanje'}" th:method="post" >
+            <form th:action="@{'/forms/vrakanje'}" th:method="post" >
                 <div class="form-group">
                     <label for="seriski_broj">Seriski Broj </label>
                     <input type="text" id="seriski_broj" name="seriski_broj" class="form-control"
@@ -36,23 +36,37 @@
                            required>
                 </div>
                 <div class="form-group">
-                    <label for="chlenEMBG">Chlen EMBG</label>
-                    <input type="text" id="chlenEMBG" name="chlenEMBG" class="form-control"
-                           required>
+                    <label for="chlenEMBG">Chlen </label>
+                    <select name="chlenEMBG" id="chlenEMBG" class="form-control">
+                        <option th:each="chlen : ${chlenovi}"
+                                th:value="${chlen.getEmbg()}"
+                                th:text="${chlen.getImePrezime()}">
+                        </option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="vrabotenEMBG">Vraboten EMBG</label>
-                    <input type="text" id="vrabotenEMBG" name="vrabotenEMBG" class="form-control"
-                           required>
+                    <label for="vrabotenEMBG">Vraboten </label>
+                    <select name="vrabotenEMBG" id="vrabotenEMBG" class="form-control">
+                        <option th:each="vraboten : ${vraboteni}"
+                                th:value="${vraboten.getEmbg()}"
+                                th:text="${vraboten.getImePrezime()}">
+                        </option>
+                    </select>
                 </div>
-                <div class="form-group">
-                    <label for="vrabotenEMBG">Den Mesec Godina</label>
-                    <input type="text" id="day" name="day" class="form-control" required
-                           style="width: 50px;display: inline-block;">
-                    <input type="text" id="month" name="month" class="form-control" required
-                           style="width: 50px;display: inline-block;">
-                    <input type="text" id="year" name="year" class="form-control" required
-                           style="width: 90px;display: inline-block;">
+                <div class="form-group">datumPozajmuvanje
+                    <label for="date">Den Mesec Godina</label>
+<!--                    <input type="text" id="day" name="day" class="form-control" required-->
+<!--                           style="width: 50px;display: inline-block;">-->
+<!--                    <input type="text" id="month" name="month" class="form-control" required-->
+<!--                           style="width: 50px;display: inline-block;">-->
+<!--                    <input type="text" id="year" name="year" class="form-control" required-->
+<!--                           style="width: 90px;display: inline-block;">-->
+                    <select name="date" id="date" class="form-control">
+                        <option th:each="poz : ${pozajmiciActive}"
+                                th:value="${poz.getDatumPozajmuvanje()}"
+                                th:text="${poz.getDatumPozajmuvanje()}">
+                        </option>
+                    </select>
                 </div>
                 <br>
                 <button id="submit" type="submit" style="float: right;" class="btn btn-outline-primary">  Submit  <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>

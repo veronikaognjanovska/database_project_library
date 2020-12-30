@@ -1,6 +1,7 @@
 package library_project.lab.service.impl;
 
 
+
 import library_project.lab.model.Vraboten;
 import library_project.lab.model.exception.AlreadyExistsException;
 import library_project.lab.repository.VrabotenRepository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
-import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,4 +49,9 @@ public class VrabotenServiceImpl implements VrabotenService {
         return vraboten.get();
     }
 
+
+    @Override
+    public List<Vraboten> findAll() {
+        return vrabotenRepository.findAll();
+    }
 }
