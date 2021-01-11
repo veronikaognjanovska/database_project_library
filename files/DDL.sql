@@ -94,3 +94,8 @@ create table pozajmica (
     constraint fk_chlen_embg foreign key (chlen_embg) references chlen(embg),
     constraint fk_vraboten_embg foreign key (vraboten_embg) references vraboten(embg)
     );
+
+
+
+create sequence sequence_inventaren_broj;
+-- SELECT nextval('sequence_inventaren_broj');

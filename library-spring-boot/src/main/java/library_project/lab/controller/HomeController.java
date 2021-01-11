@@ -1,43 +1,37 @@
 package library_project.lab.controller;
 
-import library_project.lab.model.Chlen;
-import library_project.lab.model.Pozajmica;
-import library_project.lab.model.exception.AlreadyExistsException;
+import library_project.lab.model.Avtor;
+import library_project.lab.model.Nastan;
+import library_project.lab.model.Vraboten;
 import library_project.lab.model.helpers.DateCustom;
-import library_project.lab.model.keys.PozajmicaKey;
 import library_project.lab.service.*;
-import org.omg.CosNaming.NamingContextPackage.NotFound;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 
 @Controller
 @RequestMapping("/")
 public class HomeController {
 
-//    private final ChovekService chovekService;
-//    private final VrabotenService vrabotenService;
-//    private final ChlenService  chlenService;
-//    private final AvtorService avtorService;
-//    private final NastanService nastanService;
-//    private final KnigaService knigaService ;
-//    private final PrimerokService   primerokService;
-//    private final PozajmicaService pozajmicaService;
-//
-//    public HomeController(ChovekService chovekService, VrabotenService vrabotenService, ChlenService chlenService, AvtorService avtorService, NastanService nastanService, KnigaService knigaService, PrimerokService primerokService, PozajmicaService pozajmicaService) {
-//        this.chovekService = chovekService;
-//        this.vrabotenService = vrabotenService;
-//        this.chlenService = chlenService;
-//        this.avtorService = avtorService;
-//        this.nastanService = nastanService;
-//        this.knigaService = knigaService;
-//        this.primerokService = primerokService;
-//        this.pozajmicaService = pozajmicaService;
-//    }
+    private final ChovekService chovekService;
+    private final VrabotenService vrabotenService;
+    private final ChlenService  chlenService;
+    private final AvtorService avtorService;
+    private final NastanService nastanService;
+    private final KnigaService knigaService ;
+    private final PrimerokService   primerokService;
+    private final PozajmicaService pozajmicaService;
+
+    public HomeController(ChovekService chovekService, VrabotenService vrabotenService, ChlenService chlenService, AvtorService avtorService, NastanService nastanService, KnigaService knigaService, PrimerokService primerokService, PozajmicaService pozajmicaService) {
+        this.chovekService = chovekService;
+        this.vrabotenService = vrabotenService;
+        this.chlenService = chlenService;
+        this.avtorService = avtorService;
+        this.nastanService = nastanService;
+        this.knigaService = knigaService;
+        this.primerokService = primerokService;
+        this.pozajmicaService = pozajmicaService;
+    }
 
 
     @GetMapping
@@ -76,6 +70,17 @@ public class HomeController {
 //        }catch (Exception e){
 //             String error = e.getMessage();
 //        }
+
+        if(chovekService.findAll().size()<=0){
+            try {
+            Vraboten vraboten  = vrabotenService.save("1412999000455","Vraboten1","VrabotenSurname",
+                     DateCustom.getZonedDateTimeFromDateString("01-05-1990"),"address","077888999",DateCustom.getZonedDateTimeFromDateString("01-05-2019"));
+            Avtor avtor = avtorService.save("Avtor1", "AvtorSurname", 1900);
+            Nastan nastan = nastanService.save(DateCustom.getZonedDateTimeFromDateString("01-05-2020"), "1412999000455");
+            }catch (Exception e){
+                 String errorException = e.getMessage();
+            }
+        }
 
         if(success!=null && !success.isEmpty()){
             model.addAttribute("hasSuccess",true);

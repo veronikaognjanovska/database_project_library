@@ -127,11 +127,11 @@ public class FormController {
                 throw new IllegalArgumentException();
             }
             Chlen chlen  = chlenService.save(embg,ime,prezime,
-                    DateCustom.getZonedDateTimeFromDateString(date),
+                    DateCustom.getZonedDateTimeFromDateStringDateDate(date),
                     adresa_na_ziveenje,telefonski_broj,
                     DateCustom.getDateNow());
 
-            return "redirect:/?success="+chlen.getImePrezime()+" e uspeshno zachlenet";
+            return "redirect:/?success="+chlen.getImePrezime()+" e noviot chlen!";
         }catch (Exception ex){
             return "redirect:/?error=Zachlenuvanjeto e neuspeshno";
         }
@@ -172,7 +172,7 @@ public class FormController {
 
     @PostMapping("/kniga")
     public String getKnigaPage(@RequestParam String naslov,@RequestParam Integer strani,
-                               @RequestParam Long nastan,@RequestParam Long avtor){
+                               @RequestParam(required = false) Long nastan,@RequestParam Long avtor){
         try{
             if( naslov==null || strani==null ||
                     avtor==null ){

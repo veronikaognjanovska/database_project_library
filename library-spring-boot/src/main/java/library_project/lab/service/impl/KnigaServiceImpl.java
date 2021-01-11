@@ -44,7 +44,11 @@ public class KnigaServiceImpl implements KnigaService {
         if (naslov==null || naslov.isEmpty() ) {
             throw new IllegalArgumentException();
         }
-        Nastan nastan=nastanService.findById(nastan_id);
+
+        Nastan nastan=null;
+        if(nastan_id!=null){
+             nastan=nastanService.findById(nastan_id);
+        }
         if(knigaRepository.findByNaslovAndBrojStraniAndNastan(naslov, broj_strani, nastan).isPresent()){
             throw new AlreadyExistsException();
         }

@@ -143,4 +143,3 @@ create view momentalni_pozajmici as
     ;
 select * from momentalni_pozajmici;
 
-

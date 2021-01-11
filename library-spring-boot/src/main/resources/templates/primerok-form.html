@@ -69,6 +69,7 @@
                 <div class="form-group">
                     <label for="nastan">Nastan </label>
                     <select name="nastan" id="nastan" class="form-control">
+                        <option th:value="null">Ne e objavena na nastan</option>
                         <option th:each="n : ${nastani}"
                                 th:value="${n.getNastanId()}"
                                 th:text="${n.getNastanId()}">

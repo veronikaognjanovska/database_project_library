@@ -104,7 +104,7 @@ select * from kniga_napishana_avtor;
 -- drop view  site_pozajmici;
 -- drop view  dostapnost_na_knigi;
 -- drop view  pregled_na_site_knigi;
-
+--
 -- drop table pozajmica;
 -- drop table kniga_napishana_avtor;
 -- drop table primerok;
@@ -114,9 +114,8 @@ select * from kniga_napishana_avtor;
 -- drop table vraboten;
 -- drop table chlen;
 -- drop table chovek;
-
--- drop domain STATUS_PRIMEROK;
--- drop domain STATUS_POZAJMICA;
-
+--
+--
+--
 
 

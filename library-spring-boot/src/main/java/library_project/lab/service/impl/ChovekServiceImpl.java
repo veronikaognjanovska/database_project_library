@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.ZonedDateTime;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,6 +48,11 @@ public class ChovekServiceImpl implements ChovekService {
             throw new NotFound();
         }
         return chovek.get();
+    }
+
+    @Override
+    public List<Chovek> findAll() {
+        return chovekRepository.findAll();
     }
 
 
